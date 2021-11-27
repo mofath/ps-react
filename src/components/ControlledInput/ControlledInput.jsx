@@ -1,12 +1,11 @@
-import React from 'react'
 import { useState } from 'react';
 
-export default function ControlledInput ({ onSearch }){
+const ControlledInput = ({ onClick }) => {
   const [value, setValue] = useState('');
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setValue(value);
+    onClick(value);
   };
 
   const onChange = (event) => {
@@ -20,3 +19,5 @@ export default function ControlledInput ({ onSearch }){
     </form>
   );
 };
+
+export default ControlledInput;

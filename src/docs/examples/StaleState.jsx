@@ -2,7 +2,6 @@ import CounterContainerImproved from '../../components/CounterContainerImproved/
 import CounterContainer from '../../components/CounterContainer/CounterContainer';
 import CodeExample from '../CodeExample';
 import componentData from '../../../config/componentData';
-import Note from '../Note';
 
 export default function StaleStateExample() {
   return (

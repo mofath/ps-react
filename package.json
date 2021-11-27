@@ -22,8 +22,8 @@
     "pluralsight"
   ],
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "styled-components": "1.4.5"
   },
   "devDependencies": {

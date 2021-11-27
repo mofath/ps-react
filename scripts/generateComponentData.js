@@ -10,10 +10,10 @@ var paths = {
   output: path.join(__dirname, '../config', 'componentData.js')
 };
 
-const enableWatchMode = process.argv.slice(2) == '--watch';
+const enableWatchMode = process.argv.slice(2) === '--watch';
 if (enableWatchMode) {
   // Regenerate component metadata when components or examples change.
-  chokidar.watch([paths.examples, paths.components]).on('change', function(event, path) {
+  chokidar.watch([paths.examples, paths.components]).on('change', function (event, path) {
     generate(paths);
   });
 } else {
@@ -23,18 +23,18 @@ if (enableWatchMode) {
 
 function generate(paths) {
   var errors = [];
-  var componentData = getDirectories(paths.components).map(function(componentName) {
+  var componentData = getDirectories(paths.components).map((componentName) => {
     try {
-      return getComponentData(paths, componentName);
-    } catch(error) {
+      return getComponentData(paths, componentName)
+    } catch (error) {
       errors.push('An error occurred while attempting to generate metadata for ' + componentName + '. ' + error);
     }
   });
-  writeFile(paths.output, "module.exports = /* eslint-disable */ " + JSON.stringify(errors.length ? errors : componentData));
+  writeFile(paths.output, "module.exports = " + JSON.stringify(errors.length ? errors : componentData));
 }
 
 function getComponentData(paths, componentName) {
-  var content = readFile(path.join(paths.components, componentName, componentName + '.js'));
+  var content = readFile(path.join(paths.components, componentName, componentName + '.jsx'));
   var info = parse(content);
   return {
     name: componentName,
@@ -47,13 +47,13 @@ function getComponentData(paths, componentName) {
 
 function getExampleData(examplesPath, componentName) {
   var examples = getExampleFiles(examplesPath, componentName);
-  return examples.map(function(file) {
-    var filePath = path.join(examplesPath, componentName, file);
-    var content = readFile(filePath);
+  return examples.map((file) => {
+    var filePath = path.join(examplesPath, componentName, file)
+    var content = readFile(filePath)
     var info = parse(content);
     return {
       // By convention, component name should match the filename.
-      // So remove the .js extension to get the component name.
+      // So remove the .jsx extension to get the component name.
       name: file.slice(0, -3),
       description: info.description,
       code: content
@@ -65,20 +65,20 @@ function getExampleFiles(examplesPath, componentName) {
   var exampleFiles = [];
   try {
     exampleFiles = getFiles(path.join(examplesPath, componentName));
-  } catch(error) {
+  } catch (error) {
     console.log(chalk.red(`No examples found for ${componentName}.`));
   }
   return exampleFiles;
 }
 
 function getDirectories(filepath) {
-  return fs.readdirSync(filepath).filter(function(file) {
+  return fs.readdirSync(filepath).filter(function (file) {
     return fs.statSync(path.join(filepath, file)).isDirectory();
   });
 }
 
 function getFiles(filepath) {
-  return fs.readdirSync(filepath).filter(function(file) {
+  return fs.readdirSync(filepath).filter(function (file) {
     return fs.statSync(path.join(filepath, file)).isFile();
   });
 }

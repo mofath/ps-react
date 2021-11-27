@@ -90,13 +90,3 @@ export default function StaleStateExample() {
     </div>
   );
 }
-
-// when to use the object and when to use the function in useState() ?
-// • Always use this.setState() with a function when you depend on previous state or props.
-// • Only use this.setState() with an object when you don’t depend on previous properties.
-// • In case of uncertainty, default to use this.setState() with a function.
-
-// when to use the object and when to use the function in useState() ?
-// • Always use this.setState() with a function when you depend on previous state or props.
-// • Only use this.setState() with an object when you don’t depend on previous properties.
-// • In case of uncertainty, default to use this.setState() with a function.

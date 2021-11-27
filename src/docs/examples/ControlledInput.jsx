@@ -20,7 +20,7 @@ export default function ControlledInputExample() {
         </li>
       </ul>
 
-      <p className='example__subtitle'>Controlled Input</p>
+      <p className='example__subtitle'>Uncontrolled Input</p>
 
       <div className='example__text'>
         The value from the input node is retrieved by using the reference to the

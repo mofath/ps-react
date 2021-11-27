@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-export default function CounterContainer() {
+export default function CounterContainerImproved() {
   const [counter, setCounter] = useState(0);
 
   const onIncrement = () => {
-    setCounter(counter + 1);
+    setCounter((prevState) => prevState + 1);
   };
 
   const onDecrement = () => {
-    setCounter(counter - 1);
+    setCounter((prevState) => prevState - 1);
   };
 
   return (

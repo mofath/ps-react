@@ -4,12 +4,12 @@ import Navigation from './Navigation';
 import Example from './Example';
 import ControlledInputExample from './examples/ControlledInput';
 import StaleState from './examples/StaleState';
-
+import RenderProps from './examples/RenderProps';
 
 const examples = [
   { name: 'Controlled Input', component: <ControlledInputExample /> },
   { name: 'Stale State', component: <StaleState /> },
-
+  { name: 'RenderProps', component: <RenderProps /> },
 ];
 
 const Docs = () => {
